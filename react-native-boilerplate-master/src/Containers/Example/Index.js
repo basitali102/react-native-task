@@ -6,12 +6,14 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native'
 import { Brand } from '@/Components'
 import { useTheme } from '@/Theme'
 import FetchOne from '@/Store/User/FetchOne'
 import { useTranslation } from 'react-i18next'
 import ChangeTheme from '@/Store/Theme/ChangeTheme'
+import {increment, decrement} from "./../../Store/counter/Counter"
 
 
 
@@ -25,6 +27,7 @@ const IndexExampleContainer = () => {
     (state) => state.user.fetchOne.loading,
   )
   const fetchOneUserError = useSelector((state) => state.user.fetchOne.error)
+  const {count} = useSelector((state)=> state.CounterReducer)
 
 
   const [userId, setUserId] = useState('1')
@@ -39,7 +42,7 @@ const IndexExampleContainer = () => {
   }
 
   return (
-    
+    <ScrollView>
       <View style={[Layout.fill, Layout.colCenter, Gutters.smallHPadding]}>
         <View style={[[Layout.colCenter, Gutters.smallHPadding]]}>
           <Brand />
@@ -94,9 +97,37 @@ const IndexExampleContainer = () => {
         >
           <Text style={Fonts.textRegular}>Light</Text>
         </TouchableOpacity>
+      
+        <View  style={[
+              Gutters.smallHPadding,
+              Gutters.largeVMargin,
+            ]}>
+          <Text style={Fonts.textRegular}>counter: {count}</Text>
+        </View>
 
+        <View style={[
+            Layout.row,
+            Layout.rowHCenter,
+            Gutters.smallHPadding,
+            Gutters.largeVMargin,
+          ]}>
+
+          <TouchableOpacity
+            style={[Common.button.rounded, Gutters.regularBMargin]}
+            onPress={()=>dispatch(increment())}
+          >
+            <Text style={Fonts.textRegular}>increment</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[Common.button.rounded, Gutters.regularBMargin]}
+            onPress={()=>dispatch(decrement())}
+          >
+            <Text style={Fonts.textRegular}>decrement</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    
+    </ScrollView>
   )
 }
 

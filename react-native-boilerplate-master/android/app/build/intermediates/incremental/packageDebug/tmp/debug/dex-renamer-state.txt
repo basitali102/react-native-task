@@ -1,0 +1,4 @@
+#Sat Mar 27 23:38:19 PKT 2021
+base.0=D\:\\react_native_repo\\react-native-task\\react-native-boilerplate-master\\android\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

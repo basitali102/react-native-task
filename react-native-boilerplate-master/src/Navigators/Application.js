@@ -7,6 +7,7 @@ import { navigationRef } from '@/Navigators/Root'
 import { SafeAreaView, StatusBar } from 'react-native'
 import { useTheme } from '@/Theme'
 import { AppearanceProvider } from 'react-native-appearance'
+import Dashboard from "@/Containers/Example/Dashboard"
 
 const Stack = createStackNavigator()
 
@@ -50,7 +51,9 @@ const ApplicationNavigator = () => {
                   animationEnabled: false,
                 }}
               />
+              
             )}
+            <Stack.Screen name="dashboard" component={Dashboard}/>
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>

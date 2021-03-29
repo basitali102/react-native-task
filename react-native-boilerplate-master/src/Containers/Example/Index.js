@@ -7,17 +7,18 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Button,
 } from 'react-native'
 import { Brand } from '@/Components'
 import { useTheme } from '@/Theme'
 import FetchOne from '@/Store/User/FetchOne'
 import { useTranslation } from 'react-i18next'
 import ChangeTheme from '@/Store/Theme/ChangeTheme'
-import {increment, decrement} from "./../../Store/counter/Counter"
+import {increment, decrement} from "@/Store/counter/Counter"
 
 
 
-const IndexExampleContainer = () => {
+const IndexExampleContainer = ({navigation}) => {
   const { t } = useTranslation()
   const { Common, Fonts, Gutters, Layout } = useTheme()
   const dispatch = useDispatch()
@@ -39,6 +40,10 @@ const IndexExampleContainer = () => {
 
   const changeTheme = ({ theme, darkMode }) => {
     dispatch(ChangeTheme.action({ theme, darkMode }))
+  }
+
+  const dashboard=()=>{
+    navigation.push("dashboard")
   }
 
   return (
@@ -109,7 +114,6 @@ const IndexExampleContainer = () => {
             Layout.row,
             Layout.rowHCenter,
             Gutters.smallHPadding,
-            Gutters.largeVMargin,
           ]}>
 
           <TouchableOpacity
@@ -127,6 +131,9 @@ const IndexExampleContainer = () => {
           </TouchableOpacity>
         </View>
       </View>
+
+      <Button title="Go TO Dashboard" onPress={dashboard}/>
+
     </ScrollView>
   )
 }
